@@ -146,7 +146,26 @@ class MHInstallEntity extends Entity{
  * sites/all/modules/contrib/entity/includes/entity.controller.inc
  */
 class MHInstallEntityController extends EntityAPIController {
-
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+    $build = parent::buildContent($entity, $view_mode, $langcode, $content);
+    // Build page here.
+    return $build;
+  }
+  
+  /**
+   * Override save method.
+   *
+   * Populate created and updated dates automatically.
+   */
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+    if (isset($entity->is_new)) {
+      $entity->created = REQUEST_TIME;
+    }
+    
+    $entity->updated = REQUEST_TIME;
+    
+    return parent::save($entity, $transaction);
+  }
 }
 
 /**
