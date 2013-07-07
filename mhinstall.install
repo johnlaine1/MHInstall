@@ -17,12 +17,12 @@ function mhinstall_schema() {
         'description' => 'Primary key of the MH Install entity',
         'type' => 'serial',
         'unsigned' => TRUE,
-        'nut null' => TRUE,
+        'not null' => TRUE,
       ),
       'label' => array(
         'description' => 'Human readable label for a MH Install',
         'type' => 'varchar',
-        'lenght' => 255,
+        'length' => '255',
         'not null' => TRUE,
       ),
       'created' => array(
