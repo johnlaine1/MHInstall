@@ -3,3 +3,53 @@
  * @file
  * Provides a custom entity type name 'mhinstall' for tracking Manufactured home installations.
  */
+
+/**
+ * Implements hook_entity_info().
+ */
+function mhinstall_entity_info() {
+  $info = array();
+  // The custom mhinstall entity is defined here.
+  // See http://drupal.org/node/1026420 and http://drupal.org/node/878804
+  // for more documentation.
+  $info['mhinstall'] = array(
+    // Human readable label
+    'label' => t('MH Install'),
+    // Table for storing entity data, defined in hook_schema().
+    'base table' => 'mhinstall_mhinstall',
+    // This helps Entity API know how to query the custom table.
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'label',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mhinstall_menu() {
+  $items = array();
+  // Testing purposes.
+  $items['mhinstall_entity'] = array(
+    'title' => 'MH Install Demo page',
+    'page callback' => 'mhinstall_demo_page',
+    'access callback' => TRUE,
+    'menu' => 'navigation',
+  );
+  return $items;
+}
+
+/**
+ * Callback for /mhinstall-entity.
+ *
+ * This is for testing purposes and can be deleted if no longer needed.
+ */
+function mhinstall_demo_page() {
+  // Load and display an entity (don't forget to add one to the database first).
+  $mhinstall = entity_load('mhinstall', array(1));
+  dsm($mhinstall);
+
+  return 'Have to return something or the page won\'t show up';
+}
