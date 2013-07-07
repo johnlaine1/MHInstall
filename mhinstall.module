@@ -22,6 +22,17 @@ function mhinstall_entity_info() {
       'id' => 'id',
       'label' => 'label',
     ),
+    'uri callback' => 'entity_class_uri',
+    // Default class is 'Entity',
+    'entity class' => 'MHInstallEntity',
+    // Default class is 'EntityAPIController',
+    'controller class' => 'MHInstallEntityController',
+    // The information below is used to extend the EntityDefaultUIController.
+    'admin ui' => array(
+      'path' => 'admin/structure/mhinstall',
+      'controller class' => 'MHInstallEntityUIController',
+      'menu wildcard' => '%mhinstall',
+    ),
   );
   return $info;
 }
@@ -38,7 +49,21 @@ function mhinstall_menu() {
     'access callback' => TRUE,
     'menu' => 'navigation',
   );
+  $items['mhinstall/%mhinstall'] = array(
+    'title' => 'MH Install',
+    'page callback' => 'mhinstall_view_entity',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+  );
   return $items;
+}
+
+/**
+ * Menu autoloader for /mhinstall/%mhinstall.
+ */
+function mhinstall_load($id) {
+  $mhinstall = entity_load('mhinstall', array($id));
+  return array_pop($mhinstall);
 }
 
 /**
@@ -53,3 +78,52 @@ function mhinstall_demo_page() {
 
   return 'Have to return something or the page won\'t show up';
 }
+
+/**
+ * Callback for /mhinstall/ID page.
+ *
+ * A place to render a complete video entity.
+ */
+function mhinstall_view_entity($mhinstall) {
+  $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall));
+  dsm($mhinstall_entity);
+  return 'Hello World';
+}
+
+/**
+ * Custom entity class.
+ * The class being overriden is located in:
+ * sites/all/modules/contrib/entity/includes/entity.inc
+ */
+class MHInstallEntity extends Entity{
+  /**
+   * Override this in order to implement a custom default URI.
+   */
+  protected function defaultUri() {
+    return array('path' => 'mhinstall/' . $this->identifier());
+  }
+}
+
+/**
+ * Our custom controller for the mhinstall type.
+ *
+ * We're choosing to extend the controller provided by the entity module for
+ * full CRUD support for mhinstall.
+ *
+ * The EntityAPIController is found in
+ * sites/all/modules/contrib/entity/includes/entity.controller.inc
+ */
+class MHInstallEntityController extends EntityAPIController {
+
+}
+
+/**
+ * Our custom controller for the admin ui.
+ *
+ * The EntityDefaultUIController can be found in
+ * sites/all/modules/contrib/entity/includes/entity.ui.inc
+ */
+class MHInstallEntityUIController extends EntityDefaultUIController {
+
+}
+
