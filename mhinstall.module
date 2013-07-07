@@ -107,6 +107,19 @@ function mhinstall_access($op, $mhinstall = NULL, $account = NULL) {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function mhinstall_permission() {
+  return array(
+    'view mhinstalls' => array(
+      'title' => t('View MH Install Entities'),      
+    ),
+    'administer mhinstalls' => array(
+      'title' => t('Administer MH Install Entities'),
+    ),
+  );
+}
+/**
  * Custom entity class.
  * The class being overriden is located in:
  * sites/all/modules/contrib/entity/includes/entity.inc
