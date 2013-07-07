@@ -32,7 +32,11 @@ function mhinstall_entity_info() {
       'path' => 'admin/structure/mhinstall',
       'controller class' => 'MHInstallEntityUIController',
       'menu wildcard' => '%mhinstall',
+      'file' => 'mhinstall.admin.inc',
     ),
+    'module' => 'mhinstall',
+    // This controls who can access entity CRUD.
+    'access callback' => 'mhinstall_access'
   );
   return $info;
 }
