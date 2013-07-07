@@ -90,6 +90,7 @@ function mhinstall_demo_page() {
  * A place to render a complete video entity.
  */
 function mhinstall_view_entity($mhinstall) {
+  drupal_set_title($mhinstall->label);
   $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall));
   dsm($mhinstall_entity);
   return 'Hello World';
