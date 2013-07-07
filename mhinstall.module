@@ -22,6 +22,7 @@ function mhinstall_entity_info() {
       'id' => 'id',
       'label' => 'label',
     ),
+    // A simple wrapper around the uri mehtod in the controller class.
     'uri callback' => 'entity_class_uri',
     // Default class is 'Entity',
     'entity class' => 'MHInstallEntity',
@@ -98,12 +99,13 @@ function mhinstall_view_entity($mhinstall) {
  * Access callback for mhinstall CRUD operations.
  */
 function mhinstall_access($op, $mhinstall = NULL, $account = NULL) {
-  if ($op == 'view' && user_access('view mhinstalls', $account)) {
+  if (($op == 'view' && user_access('view mhinstalls', $account)) || user_access('administer mhinstalls', $account)) {
     return TRUE;
   }
   else if (user_access('administer mhinstalls', $account)) {
     return TRUE;
   }
+  return FALSE;
 }
 
 /**
