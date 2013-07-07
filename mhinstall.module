@@ -95,6 +95,18 @@ function mhinstall_view_entity($mhinstall) {
 }
 
 /**
+ * Access callback for mhinstall CRUD operations.
+ */
+function mhinstall_access($op, $mhinstall = NULL, $account = NULL) {
+  if ($op == 'view' && user_access('view mhinstalls', $account)) {
+    return TRUE;
+  }
+  else if (user_access('administer mhinstalls', $account)) {
+    return TRUE;
+  }
+}
+
+/**
  * Custom entity class.
  * The class being overriden is located in:
  * sites/all/modules/contrib/entity/includes/entity.inc
