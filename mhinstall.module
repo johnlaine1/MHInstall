@@ -60,6 +60,38 @@ function mhinstall_entity_info() {
 }
 
 /**
+ * Implements hook_entity_property_info().
+ */
+function mhinstall_entity_property_info() {
+  $info = array();
+  $properties = &$info['mhinstall']['properties'];
+  $properties['id'] = array(
+    'label' => t('MID'),
+    'description' => t('The unique, numeric, internal ID of the mh install.'),
+    'type' => 'integer',
+    'schema field' => 'id',
+  );
+  $properties['label'] = array(
+    'label' => t('MH Install ID'),
+    'description' => t('The unique human readable ID of the mh install.'),
+    'type' => 'text',
+    'schema field' => 'label',
+  );
+  $properties['created'] = array(
+    'label' => t('Created date'),
+    'description' => t('The date the MH Install was created.'),
+    'type' => 'date',
+    'schema field' => 'created',
+  );
+  $properties['updated'] = array(
+    'label' => t('Updated date'),
+    'description' => t('The date the MH Install was last updated.'),
+    'type' => 'date',
+    'schema field' => 'updated',
+  );
+  return $info;
+}
+/**
  * Implements hook_menu().
  */
 function mhinstall_menu() {
