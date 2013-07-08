@@ -53,11 +53,7 @@ function mhinstall_entity_info() {
       'custom_view1' => array(
         'label' => t('Custom View 1'),
         'custom settings' => FALSE,
-      ),
-      'custom_view2' => array(
-        'label' => t('Custom View 2'),
-        'custom settings' => FALSE,
-      ),
+      ),      
     ),
   );
   return $info;
@@ -111,8 +107,10 @@ function mhinstall_demo_page() {
  * A place to render a complete video entity.
  */
 function mhinstall_view_entity($mhinstall) {
+  // Use any of the view modes defined in hook_entity_info().
+  $viewmode = 'full'; 
   drupal_set_title($mhinstall->label);
-  $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall), 'custom_view1');
+  $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall), $viewmode);
   dsm($mhinstall_entity);
   return $mhinstall_entity;
 }
@@ -186,6 +184,14 @@ class MHInstallEntityController extends EntityAPIController {
       '#type' => 'markup',
       '#markup' => 'This entity was last updated on ' . date('m-d-Y', $entity->updated) . '<br>',
     );
+    
+    if ($view_mode == 'custom_view1') {
+      $build['custom_view1'] = array(
+        '#type' => 'markup',
+        '#markup' => 'This is Custom View 1',
+      );
+    }
+    
     return $build;
   }
   
