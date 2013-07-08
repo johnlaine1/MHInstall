@@ -49,6 +49,16 @@ function mhinstall_entity_info() {
       ),
     ),
     'views controller class' => 'EntityDefaultViewsController',
+    'view modes' => array(
+      'custom_view1' => array(
+        'label' => t('Custom View 1'),
+        'custom settings' => FALSE,
+      ),
+      'custom_view2' => array(
+        'label' => t('Custom View 2'),
+        'custom settings' => FALSE,
+      ),
+    ),
   );
   return $info;
 }
