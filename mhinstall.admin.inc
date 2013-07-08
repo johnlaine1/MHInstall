@@ -20,6 +20,8 @@ function mhinstall_form($form, &$form_state, $mhinstall) {
     '#weight' => -50,
   );  
 
+  field_attach_form('mhinstall', $mhinstall, $form, $form_state);
+  
   $form['actions'] = array(
     '#type' => 'actions',
     'submit' => array(
