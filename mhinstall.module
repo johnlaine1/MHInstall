@@ -37,7 +37,17 @@ function mhinstall_entity_info() {
     ),
     'module' => 'mhinstall',
     // This controls who can access entity CRUD.
-    'access callback' => 'mhinstall_access'
+    'access callback' => 'mhinstall_access',
+    'fieldable' => TRUE,
+    'bundles' => array(
+      'mhinstall' => array(
+        'label' => t('MH Install'),
+        'admin' => array(
+          'path' => 'admin/structure/mhinstall',
+          'access arguments' => array('administer mhinstalls'),
+        ),
+      ),
+    ),
   );
   return $info;
 }
