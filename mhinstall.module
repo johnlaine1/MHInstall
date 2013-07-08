@@ -112,7 +112,7 @@ function mhinstall_demo_page() {
  */
 function mhinstall_view_entity($mhinstall) {
   drupal_set_title($mhinstall->label);
-  $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall));
+  $mhinstall_entity = entity_view('mhinstall', array($mhinstall->id => $mhinstall), 'custom_view1');
   dsm($mhinstall_entity);
   return $mhinstall_entity;
 }
