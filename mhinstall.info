@@ -3,3 +3,4 @@ description = A module for tracking and displaying information related to the in
 core = 7.x
 package = MH Install
 dependencies[] = entity
+dependencies[] = mhinstall_install
