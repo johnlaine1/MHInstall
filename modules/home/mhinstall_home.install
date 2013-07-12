@@ -1,38 +1,38 @@
 <?php
 /**
  * @file
- * Installation and schema hooks for customentity.module.
+ * Installation and schema hooks for mhinstall_home.module.
  */
 
 /**
  * Implements hook_schema().
  */
-function customentity_schema() {
+function mhinstall_home_schema() {
   $schema = array();
-  // The table for the CustomEntity entity type.
-  $schema['customentity'] = array(
-    'description' => 'The base table for the CustomEntity entity',
+  // The table for the Mhinstall_home entity type.
+  $schema['mhinstall_home'] = array(
+    'description' => 'The base table for the mhinstall_home entity',
     'fields' => array(
       'id' => array(
-        'description' => 'Primary key of the CustomEntity entity',
+        'description' => 'Primary key of the mhinstall_home entity',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
       'label' => array(
-        'description' => 'Human readable label for an CustomEntity entity',
+        'description' => 'Human readable label for an mhinstall_home entity',
         'type' => 'varchar',
         'length' => '255',
         'not null' => TRUE,
       ),
       'created' => array(
-        'description' => 'Timestamp of when the CustomEntity entity was created',
+        'description' => 'Timestamp of when the mhinstall_home entity was created',
         'type' => 'int',
         'length' => 10,
         'not null' => FALSE,
       ),
       'updated' => array(
-        'description' => 'Timestamp of when the CustomEntity entity was last updated',
+        'description' => 'Timestamp of when the mhinstall_home entity was last updated',
         'type' => 'int',
         'length' => 10,
         'not null' => FALSE,
