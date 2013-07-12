@@ -1,22 +1,22 @@
 <?php
 /**
  * @file
- * Provides a custom entity type name 'customentity'.
+ * Provides a custom entity type name 'mhinstall_home'.
  */
 
 /**
  * Implements hook_entity_info().
  */
-function customentity_entity_info() {
+function mhinstall_home_entity_info() {
   $info = array();
-  // The custom CustomEntity entity is defined here.
+  // The custom mhinstall_home entity is defined here.
   // See http://drupal.org/node/1026420 and http://drupal.org/node/878804
   // for more documentation.
-  $info['customentity'] = array(
+  $info['mhinstall_home'] = array(
     // Human readable label
-    'label' => t('CustomEntity'),
+    'label' => t('mhinstall_home'),
     // Table for storing entity data, defined in hook_schema().
-    'base table' => 'customentity',
+    'base table' => 'mhinstall_home',
     // This helps Entity API know how to query the custom table.
     'entity keys' => array(
       'id' => 'id',
@@ -25,26 +25,26 @@ function customentity_entity_info() {
     // A simple wrapper around the uri method in the controller class.
     'uri callback' => 'entity_class_uri',
     // Default class is 'Entity',
-    'entity class' => 'CustomEntityEntity',
+    'entity class' => 'MHInstallHomeEntity',
     // Default class is 'EntityAPIController',
-    'controller class' => 'CustomEntityEntityController',
+    'controller class' => 'MHInstallHomeEntityController',
     // The information below is used to extend the EntityDefaultUIController.
     'admin ui' => array(
-      'path' => 'admin/structure/customentity',
-      'controller class' => 'CustomEntityEntityUIController',
-      'menu wildcard' => '%customentity',
-      'file' => 'customentity.admin.inc',
+      'path' => 'admin/structure/mhinstall_home',
+      'controller class' => 'MHInstallHomeEntityUIController',
+      'menu wildcard' => '%mhinstall_home',
+      'file' => 'mhinstall_home.admin.inc',
     ),
-    'module' => 'customentity',
+    'module' => 'mhinstall_home',
     // This controls who can access entity CRUD.
-    'access callback' => 'customentity_access',
+    'access callback' => 'mhinstall_home_access',
     'fieldable' => TRUE,
     'bundles' => array(
-      'customentity' => array(
-        'label' => t('CustomEntity'),
+      'mhinstall_home' => array(
+        'label' => t('mhinstall_home'),
         'admin' => array(
-          'path' => 'admin/structure/customentity',
-          'access arguments' => array('administer customentity'),
+          'path' => 'admin/structure/mhinstall_home',
+          'access arguments' => array('administer mhinstall_home'),
         ),
       ),
     ),
@@ -62,30 +62,30 @@ function customentity_entity_info() {
 /**
  * Implements hook_entity_property_info().
  */
-function customentity_entity_property_info() {
+function mhinstall_home_entity_property_info() {
   $info = array();
-  $properties = &$info['customentity']['properties'];
+  $properties = &$info['mhinstall_home']['properties'];
   $properties['id'] = array(
     'label' => t('EID'),
-    'description' => t('The unique, numeric, internal ID of the CustomEntity entity.'),
+    'description' => t('The unique, numeric, internal ID of the mhinstall_home entity.'),
     'type' => 'integer',
     'schema field' => 'id',
   );
   $properties['label'] = array(
-    'label' => t('CustomEntity entity ID'),
-    'description' => t('The unique human readable ID of the CustomEntity entity.'),
+    'label' => t('mhinstall_home entity ID'),
+    'description' => t('The unique human readable ID of the mhinstall_home entity.'),
     'type' => 'text',
     'schema field' => 'label',
   );
   $properties['created'] = array(
     'label' => t('Created date'),
-    'description' => t('The date the CustomEntity entity was created.'),
+    'description' => t('The date the mhinstall_home entity was created.'),
     'type' => 'date',
     'schema field' => 'created',
   );
   $properties['updated'] = array(
     'label' => t('Updated date'),
-    'description' => t('The date the CustomEntity entity was last updated.'),
+    'description' => t('The date the mhinstall_home entity was last updated.'),
     'type' => 'date',
     'schema field' => 'updated',
   );
@@ -95,11 +95,11 @@ function customentity_entity_property_info() {
 /**
  * Implements hook_menu().
  */
-function customentity_menu() {
+function mhinstall_home_menu() {
   $items = array();
-  $items['customentity/%customentity'] = array(
-    'title' => 'CustomEntity entity',
-    'page callback' => 'customentity_view_entity',
+  $items['mhinstall_home/%mhinstall_home'] = array(
+    'title' => 'mhinstall_home entity',
+    'page callback' => 'mhinstall_home_view_entity',
     'page arguments' => array(1),
     'access callback' => TRUE,
   );
@@ -107,36 +107,36 @@ function customentity_menu() {
 }
 
 /**
- * Menu autoloader for /customentity/%customentity.
+ * Menu autoloader for /mhinstall_home/%mhinstall_home.
  */
-function customentity_load($id) {
-  $customentity = entity_load('customentity', array($id));
-  return array_pop($customentity);
+function mhinstall_home_load($id) {
+  $mhinstall_home = entity_load('mhinstall_home', array($id));
+  return array_pop($mhinstall_home);
 }
 
 /**
- * Callback for /customentity/ID page.
+ * Callback for /mhinstall_home/ID page.
  *
  * A place to render a complete video entity.
  */
-function customentity_view_entity($customentity) {
+function mhinstall_home_view_entity($mhinstall_home) {
   // Use any of the view modes defined in hook_entity_info().
   $viewmode = 'full'; 
-  drupal_set_title($customentity->label);
-  $customentity_view = entity_view('customentity', array($customentity->id => $customentity), $viewmode);
-  dsm($customentity, 'The results from entity_load()');
-  dsm($customentity_view, 'The results from entity_view()');
-  return $customentity_view;
+  drupal_set_title($mhinstall_home->label);
+  $mhinstall_home_view = entity_view('mhinstall_home', array($mhinstall_home->id => $mhinstall_home), $viewmode);
+  dsm($mhinstall_home, 'The results from entity_load()');
+  dsm($mhinstall_home_view, 'The results from entity_view()');
+  return $mhinstall_home_view;
 }
 
 /**
- * Access callback for customentity CRUD operations.
+ * Access callback for mhinstall_home CRUD operations.
  */
-function customentity_access($op, $customentity = NULL, $account = NULL) {
-  if (($op == 'view' && user_access('view customentity', $account)) || user_access('administer customentity', $account)) {
+function mhinstall_home_access($op, $mhinstall_home = NULL, $account = NULL) {
+  if (($op == 'view' && user_access('view mhinstall_home', $account)) || user_access('administer mhinstall_home', $account)) {
     return TRUE;
   }
-  else if (user_access('administer customentity', $account)) {
+  else if (user_access('administer mhinstall_home', $account)) {
     return TRUE;
   }
   return FALSE;
@@ -145,32 +145,32 @@ function customentity_access($op, $customentity = NULL, $account = NULL) {
 /**
  * Implements hook_permission().
  */
-function customentity_permission() {
+function mhinstall_home_permission() {
   return array(
-    'view customentity' => array(
-      'title' => t('View CustomEntity Entities'),      
+    'view mhinstall_home' => array(
+      'title' => t('View mhinstall_home Entities'),      
     ),
-    'administer customentity' => array(
-      'title' => t('Administer CustomEntity Entities'),
+    'administer mhinstall_home' => array(
+      'title' => t('Administer mhinstall_home Entities'),
     ),
   );
 }
 /**
- * Custom entity class for the CustomEntity type.
+ * Custom entity class for the mhinstall_home type.
  * The class being overriden is located in:
  * sites/all/modules/contrib/entity/includes/entity.inc
  */
-class CustomEntityEntity extends Entity {
+class MHInstallHomeEntity extends Entity {
   /**
    * Override this in order to implement a custom default URI.
    */
   protected function defaultUri() {
-    return array('path' => 'customentity/' . $this->identifier());
+    return array('path' => 'mhinstall_home/' . $this->identifier());
   }
 }
 
 /**
- * Our custom controller for the CustomEntity type.
+ * Our custom controller for the mhinstall_home type.
  *
  * We're choosing to extend the controller provided by the entity module for
  * full CRUD support for item.
@@ -178,7 +178,7 @@ class CustomEntityEntity extends Entity {
  * The EntityAPIController is found in
  * sites/all/modules/contrib/entity/includes/entity.controller.inc
  */
-class CustomEntityEntityController extends EntityAPIController {
+class MHInstallHomeEntityController extends EntityAPIController {
   public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
     $build = parent::buildContent($entity, $view_mode, $langcode, $content);
     // Build page here using render arrays.
@@ -231,13 +231,13 @@ class CustomEntityEntityController extends EntityAPIController {
  * The EntityDefaultUIController can be found in
  * sites/all/modules/contrib/entity/includes/entity.ui.inc
  */
-class CustomEntityEntityUIController extends EntityDefaultUIController {
+class MHInstallHomeEntityUIController extends EntityDefaultUIController {
  /**
    * Generates the table headers for the overview table.
    */
   protected function overviewTableHeaders($conditions, $rows, $additional_header = array()) {
     $header = $additional_header;
-    array_unshift($header, t('CustomEntity'));
+    array_unshift($header, t('mhinstall_home'));
     if (!empty($this->entityInfo['exportable'])) {
       $header[] = t('Status');
     }
