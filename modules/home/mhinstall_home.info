@@ -1,4 +1,4 @@
-name = MH Install Home
+name = Home entity type
 description = A module to assist in the creation of custom entities.
 core = 7.x
 package = MH Install
