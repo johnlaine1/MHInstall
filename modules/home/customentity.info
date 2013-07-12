@@ -1,6 +1,6 @@
-name = CustomEntity
+name = MH Install Home
 description = A module to assist in the creation of custom entities.
 core = 7.x
-package = Development
+package = MH Install
 dependencies[] = entity
 dependencies[] = devel
