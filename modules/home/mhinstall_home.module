@@ -190,13 +190,15 @@ class MHInstallHomeEntityController extends EntityAPIController {
       '#type' => 'markup',
       '#markup' => 'The label of this entity is ' . $entity->label . '<br>',
     );
+    
+    $time_format = 'm/d/Y - g:i A';    
     $build['created'] = array(
       '#type' => 'markup',
-      '#markup' => 'This entity was created on ' . date('m-d-Y', $entity->created) . '<br>',
+      '#markup' => 'This entity was created on ' . date($time_format, $entity->created) . '<br>',
     );
     $build['updated'] = array(
       '#type' => 'markup',
-      '#markup' => 'This entity was last updated on ' . date('m-d-Y', $entity->updated) . '<br>',
+      '#markup' => 'This entity was last updated on ' . date($time_format, $entity->updated) . '<br>',
     );
     
     if ($view_mode == 'custom_view1') {
