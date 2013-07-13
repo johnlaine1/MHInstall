@@ -123,7 +123,7 @@ function mhinstall_home_view_entity($mhinstall_home) {
   // Use any of the view modes defined in hook_entity_info().
   $viewmode = 'full'; 
   drupal_set_title($mhinstall_home->label);
-  $mhinstall_home_view = entity_view('mhinstall_home', array($mhinstall_home->id => $mhinstall_home), $viewmode);
+  $mhinstall_home_view = entity_view('mhinstall_home', array($mhinstall_home->id => $mhinstall_home), $viewmode);  
   dsm($mhinstall_home, 'The results from entity_load()');
   dsm($mhinstall_home_view, 'The results from entity_view()');
   return $mhinstall_home_view;
@@ -181,6 +181,7 @@ class MHInstallHomeEntity extends Entity {
 class MHInstallHomeEntityController extends EntityAPIController {
   public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
     $build = parent::buildContent($entity, $view_mode, $langcode, $content);
+    $time_format = 'm/d/Y - g:i A';
     // Build page here using render arrays.
     $build['id'] = array(
       '#type' => 'markup',
@@ -189,9 +190,7 @@ class MHInstallHomeEntityController extends EntityAPIController {
     $build['label'] = array(
       '#type' => 'markup',
       '#markup' => 'The label of this entity is ' . $entity->label . '<br>',
-    );
-    
-    $time_format = 'm/d/Y - g:i A';    
+    );    
     $build['created'] = array(
       '#type' => 'markup',
       '#markup' => 'This entity was created on ' . date($time_format, $entity->created) . '<br>',
