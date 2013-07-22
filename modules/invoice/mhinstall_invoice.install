@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Installation and schema hooks for mhinstall_invoice.module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function mhinstall_invoice_schema() {
+  $schema = array();
+  // The table for the mhinstall_invoice entity type.
+  $schema['mhinstall_invoice'] = array(
+    'description' => 'The base table for the mhinstall_invoice entity',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key of the mhinstall_invoice entity',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'label' => array(
+        'description' => 'Human readable label for an mhinstall_invoice entity',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'description' => 'Timestamp of when the mhinstall_invoice entity was created',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => FALSE,
+      ),
+      'updated' => array(
+        'description' => 'Timestamp of when the mhinstall_invoice entity was last updated',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
