@@ -1,3 +1,3 @@
-Entity Construction Template
+mhinstall_customer module
 ----------------------------
 
