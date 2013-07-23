@@ -3,5 +3,12 @@ description = A module for tracking and displaying information related to the in
 core = 7.x
 package = MH Install
 dependencies[] = entity
+dependencies[] = devel
 dependencies[] = mhinstall_install
 dependencies[] = mhinstall_home
+dependencies[] = mhinstall_customer
+dependencies[] = mhinstall_community
+dependencies[] = mhinstall_invoice
+dependencies[] = mhinstall_invoice_item
+
+
