@@ -1,4 +1,4 @@
-name = MH Install Invoice
+name = Invoice
 description = A custom entity type. Machine name = mhinstall_invoice, Human name = MH Install Invoice
 core = 7.x
 package = MH Install
