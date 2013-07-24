@@ -4,6 +4,7 @@ core = 7.x
 package = MH Install
 dependencies[] = entity
 dependencies[] = devel
+dependencies[] = entityreference
 dependencies[] = mhinstall_install
 dependencies[] = mhinstall_home
 dependencies[] = mhinstall_customer
