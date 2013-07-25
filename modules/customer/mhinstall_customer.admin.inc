@@ -46,5 +46,5 @@ function mhinstall_customer_form_submit($form, &$form_state) {
   $mhinstall_customer = entity_ui_form_submit_build_entity($form, $form_state);
   $mhinstall_customer->save();
   drupal_set_message(t('The entity @mhinstall_customer_label has been saved.', array('@mhinstall_customer_label' => $mhinstall_customer->label)));
-  $form_state['redirect'] = 'admin/structure/mhinstall_customer';
+  $form_state['redirect'] = 'admin/mh-install/data-types/mhinstall_customer';
 }

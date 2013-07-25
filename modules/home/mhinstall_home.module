@@ -30,7 +30,7 @@ function mhinstall_home_entity_info() {
     'controller class' => 'MHInstallHomeEntityController',
     // The information below is used to extend the EntityDefaultUIController.
     'admin ui' => array(
-      'path' => 'admin/structure/mhinstall_home',
+      'path' => 'admin/mh-install/data-types/mhinstall_home',
       'controller class' => 'MHInstallHomeEntityUIController',
       'menu wildcard' => '%mhinstall_home',
       'file' => 'mhinstall_home.admin.inc',
@@ -43,7 +43,7 @@ function mhinstall_home_entity_info() {
       'mhinstall_home' => array(
         'label' => t('mhinstall_home'),
         'admin' => array(
-          'path' => 'admin/structure/mhinstall_home',
+          'path' => 'admin/mh-install/data-types/mhinstall_home',
           'access arguments' => array('administer mhinstall_home'),
         ),
       ),
