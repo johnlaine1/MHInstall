@@ -30,7 +30,7 @@ function mhinstall_customer_entity_info() {
     'controller class' => 'MHInstallCustomerEntityController',
     // The information below is used to extend the EntityDefaultUIController.
     'admin ui' => array(
-      'path' => 'admin/structure/mhinstall_customer',
+      'path' => 'admin/mh-install/data-types/mhinstall_customer',
       'controller class' => 'MHInstallCustomerEntityUIController',
       'menu wildcard' => '%mhinstall_customer',
       'file' => 'mhinstall_customer.admin.inc',
@@ -41,9 +41,9 @@ function mhinstall_customer_entity_info() {
     'fieldable' => TRUE,
     'bundles' => array(
       'mhinstall_customer' => array(
-        'label' => t('MH Install Customer'),
+        'label' => t('Customer'),
         'admin' => array(
-          'path' => 'admin/structure/mhinstall_customer',
+          'path' => 'admin/mh-install/data-types/mhinstall_customer',
           'access arguments' => array('administer mhinstall_customer'),
         ),
       ),

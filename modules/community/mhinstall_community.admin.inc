@@ -46,5 +46,5 @@ function mhinstall_community_form_submit($form, &$form_state) {
   $mhinstall_community = entity_ui_form_submit_build_entity($form, $form_state);
   $mhinstall_community->save();
   drupal_set_message(t('The entity @mhinstall_community_label has been saved.', array('@mhinstall_community_label' => $mhinstall_community->label)));
-  $form_state['redirect'] = 'admin/structure/mhinstall_community';
+  $form_state['redirect'] = 'admin/mh-install/data-types/mhinstall_community';
 }
