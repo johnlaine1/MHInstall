@@ -9,8 +9,10 @@ function mhinstall_menu() {
   $items['admin/mh-install'] = array(
     'title' => t('MH Install'),
     'description' => t('Items related to MH installations'),
-    'page callback' => 'mhinstall_admin_page',
-    'access callback' => TRUE,    
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mhinstall_admin_form'),
+    'access callback' => TRUE,
+    'file' => 'mhinstall.admin.inc',
   );
   $items['admin/mh-install/data-types'] = array(
     'title' => t('Data Types'),
@@ -18,15 +20,11 @@ function mhinstall_menu() {
     'page callback' => 'mhinstall_data_types',
     'access callback' => TRUE,
   );
+  
   return $items;
 }
 
-/**
- * Page callback for admin/mh-install
- */
-function mhinstall_admin_page() {
-  return 'MH Install admin page';
-}
+
 
 /**
  * Page callback for admin/mh-install/types
