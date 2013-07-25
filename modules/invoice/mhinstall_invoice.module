@@ -30,7 +30,7 @@ function mhinstall_invoice_entity_info() {
     'controller class' => 'MHInstallInvoiceEntityController',
     // The information below is used to extend the EntityDefaultUIController.
     'admin ui' => array(
-      'path' => 'admin/structure/mhinstall_invoice',
+      'path' => 'admin/mh-install/data-types/mhinstall_invoice',
       'controller class' => 'MHInstallInvoiceEntityUIController',
       'menu wildcard' => '%mhinstall_invoice',
       'file' => 'mhinstall_invoice.admin.inc',
@@ -43,7 +43,7 @@ function mhinstall_invoice_entity_info() {
       'mhinstall_invoice' => array(
         'label' => t('MH Install Invoice'),
         'admin' => array(
-          'path' => 'admin/structure/mhinstall_invoice',
+          'path' => 'admin/mh-install/data-types/mhinstall_invoice',
           'access arguments' => array('administer mhinstall_invoice'),
         ),
       ),

@@ -1,1 +1,36 @@
 <?php
+
+/**
+ * Implements hook_menu().
+ * Define menu items and page callbacks.
+ */
+function mhinstall_menu() {
+  $items = array();
+  $items['admin/mh-install'] = array(
+    'title' => t('MH Install'),
+    'description' => t('Items related to MH installations'),
+    'page callback' => 'mhinstall_admin_page',
+    'access callback' => TRUE,    
+  );
+  $items['admin/mh-install/data-types'] = array(
+    'title' => t('Data Types'),
+    'description' => t('Data types'),
+    'page callback' => 'mhinstall_data_types',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for admin/mh-install
+ */
+function mhinstall_admin_page() {
+  return 'MH Install admin page';
+}
+
+/**
+ * Page callback for admin/mh-install/types
+ */
+function mhinstall_data_types() {
+  return 'Data types';
+}

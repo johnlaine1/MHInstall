@@ -30,7 +30,7 @@ function mhinstall_community_entity_info() {
     'controller class' => 'MHInstallCommunityEntityController',
     // The information below is used to extend the EntityDefaultUIController.
     'admin ui' => array(
-      'path' => 'admin/structure/mhinstall_community',
+      'path' => 'admin/mh-install/data-types/mhinstall_community',
       'controller class' => 'MHInstallCommunityEntityUIController',
       'menu wildcard' => '%mhinstall_community',
       'file' => 'mhinstall_community.admin.inc',
@@ -43,7 +43,7 @@ function mhinstall_community_entity_info() {
       'mhinstall_community' => array(
         'label' => t('MH Install Community'),
         'admin' => array(
-          'path' => 'admin/structure/mhinstall_community',
+          'path' => 'admin/mh-install/data-types/mhinstall_community',
           'access arguments' => array('administer mhinstall_community'),
         ),
       ),

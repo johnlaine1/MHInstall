@@ -46,5 +46,5 @@ function mhinstall_invoice_item_form_submit($form, &$form_state) {
   $mhinstall_invoice_item = entity_ui_form_submit_build_entity($form, $form_state);
   $mhinstall_invoice_item->save();
   drupal_set_message(t('The entity @mhinstall_invoice_item_label has been saved.', array('@mhinstall_invoice_item_label' => $mhinstall_invoice_item->label)));
-  $form_state['redirect'] = 'admin/structure/mhinstall_invoice_item';
+  $form_state['redirect'] = 'admin/mh-install/data-types/mhinstall_invoice_item';
 }

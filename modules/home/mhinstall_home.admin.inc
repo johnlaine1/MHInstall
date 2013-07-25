@@ -46,5 +46,5 @@ function mhinstall_home_form_submit($form, &$form_state) {
   $mhinstall_home = entity_ui_form_submit_build_entity($form, $form_state);
   $mhinstall_home->save();
   drupal_set_message(t('The entity @mhinstall_home_label has been saved.', array('@mhinstall_home_label' => $mhinstall_home->label)));
-  $form_state['redirect'] = 'admin/structure/mhinstall_home';
+  $form_state['redirect'] = 'admin/mh-install/data-types/mhinstall_home';
 }
