@@ -14,7 +14,7 @@ function mhinstall_home_entity_info() {
   // for more documentation.
   $info['mhinstall_home'] = array(
     // Human readable label
-    'label' => t('mhinstall_home'),
+    'label' => t('Home'),
     // Table for storing entity data, defined in hook_schema().
     'base table' => 'mhinstall_home',
     // This helps Entity API know how to query the custom table.
