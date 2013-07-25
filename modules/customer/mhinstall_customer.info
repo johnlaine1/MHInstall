@@ -1,4 +1,4 @@
-name = Customer entity type
+name = Customer
 description = Creates an entity type named 'Customer' to store information about Manufactured Home installation customers.
 core = 7.x
 package = MH Install
