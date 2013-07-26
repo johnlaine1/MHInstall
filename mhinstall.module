@@ -9,19 +9,33 @@ function mhinstall_menu() {
   $items['admin/mh-install'] = array(
     'title' => t('MH Install'),
     'description' => t('Items related to MH installations'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('mhinstall_admin_form'),
-    'access callback' => TRUE,
-    'file' => 'mhinstall.admin.inc',
+    'page callback' => 'mhinstall_admin_page',
+    'access callback' => TRUE,    
   );
   $items['admin/mh-install/data-types'] = array(
     'title' => t('Data Types'),
     'description' => t('Data types'),
-    'page callback' => 'mhinstall_data_types',
+    'page callback' => 'mhinstall_data_types_page',
     'access callback' => TRUE,
   );
   
   return $items;
+}
+
+/**
+ * Page callback for admin/mh-install
+ */
+function mhinstall_admin_page(){
+  $output['test'] = array(
+    '#type' => 'markup',
+    '#markup' => 'Brought to you by the "mhinstall_admin_page()" function',
+  );
+  $output['type_list'] = array(
+    '#theme' => 'table',    
+    '#header' => array('head1', 'head2', 'head3', 'head4'),
+    '#rows' => array(array('cell1', 'cell2', 'cell3', 'cell4')),
+  );
+  return $output;
 }
 
 
@@ -29,6 +43,51 @@ function mhinstall_menu() {
 /**
  * Page callback for admin/mh-install/types
  */
-function mhinstall_data_types() {
-  return 'Data types';
+function mhinstall_data_types_page() {
+  $types = array();
+  $entities = entity_get_info();
+  foreach ($entities as $key => $value) {
+    $boolean = strpos($key, 'mhinstall');
+    if ($boolean !== FALSE) {
+      $types[$key] = $value;
+    }
+  }
+  foreach ($types as $entity_name => $properties) {
+    $name = $properties['label'];
+    $path = $properties['admin ui']['path'];
+    $admin_url = $path;
+    $add_url = $path . '/add';
+    $fields_url = $path . '/fields';
+    $display_url = $path . '/display';
+    
+    $rows[] = array(
+      l($name, $admin_url),
+      l('add', $add_url), 
+      l('manage fields', $fields_url),
+      l('manage display', $display_url),
+    );
+  }
+  dsm($types);
+  dsm($rows);
+  $output['test'] = array(
+    '#type' => 'markup',
+    '#markup' => 'Brought to you by the "mhinstall_data_types_page()" function',
+  );
+  
+  
+  $output['type_list'] = array(
+    '#theme' => 'table',    
+    '#header' => array(
+      array(
+        'data' => 'Name',
+        ),
+      array(
+        'data' => 'Operations',
+        'colspan' => 3,
+        )
+      ),
+    '#rows' => $rows,
+  );  
+  return $output;
 }
+
