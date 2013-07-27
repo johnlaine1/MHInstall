@@ -26,14 +26,17 @@ function mhinstall_menu() {
  * Page callback for admin/mh-install
  */
 function mhinstall_admin_page(){
+  $output = array();
+  
   $output['test'] = array(
     '#type' => 'markup',
     '#markup' => 'Brought to you by the "mhinstall_admin_page()" function',
   );
-  $output['type_list'] = array(
-    '#theme' => 'table',    
-    '#header' => array('head1', 'head2', 'head3', 'head4'),
-    '#rows' => array(array('cell1', 'cell2', 'cell3', 'cell4')),
+  $output['action_list'] = array(
+    '#theme' => 'item_list',    
+    '##title' => t('Actions'),
+    '#type' => 'ul',
+    '#items' => array('one', 'two', 'three', 'four', 'five'),
   );
   return $output;
 }
@@ -53,6 +56,7 @@ function mhinstall_data_types_page() {
     }
   }
   foreach ($types as $entity_name => $properties) {
+    $output = array();
     $name = $properties['label'];
     $path = $properties['admin ui']['path'];
     $admin_url = $path;
