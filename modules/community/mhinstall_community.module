@@ -16,7 +16,8 @@ function mhinstall_community_entity_info() {
     // Human readable label
     'label' => t('Community'),
     'plural label' => t('Communities'),
-    // Table for storing entity data, defined in hook_schema().    
+    'description' => t('Store information about MH Communities'),
+    // Table for storing entity data, defined in hook_schema().
     'base table' => 'mhinstall_community',
     // This helps Entity API know how to query the custom table.
     'entity keys' => array(
@@ -42,7 +43,7 @@ function mhinstall_community_entity_info() {
     'fieldable' => TRUE,
     'bundles' => array(
       'mhinstall_community' => array(
-        'label' => t('MH Install Community'),
+        'label' => t('Community'),
         'admin' => array(
           'path' => 'admin/mh-install/data-types/mhinstall_community',
           'access arguments' => array('administer mhinstall_community'),

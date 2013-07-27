@@ -59,27 +59,27 @@ function mhinstall_data_types_page() {
     $add_url = $path . '/add';
     $fields_url = $path . '/fields';
     $display_url = $path . '/display';
+    $description = (array_key_exists('description', $properties)) ? $properties['description'] : '';
     
     $rows[] = array(
-      l($name, $admin_url),
+      l($name, $admin_url) . '</br>' . $description,
       l('add', $add_url), 
       l('manage fields', $fields_url),
       l('manage display', $display_url),
     );
   }
-  dsm($types);
-  dsm($rows);
+  //dsm($types);
+  //dsm($rows);
   $output['test'] = array(
     '#type' => 'markup',
-    '#markup' => 'Brought to you by the "mhinstall_data_types_page()" function',
-  );
-  
+    '#markup' => 'Data types provided by the <strong>MH Install</strong> module.',
+  );  
   
   $output['type_list'] = array(
     '#theme' => 'table',    
     '#header' => array(
       array(
-        'data' => 'Name',
+        'data' => 'Name',        
         ),
       array(
         'data' => 'Operations',
