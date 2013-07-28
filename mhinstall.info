@@ -2,6 +2,7 @@ name = MH Install
 description = A module for tracking and displaying information related to the installation of manufactured homes.
 core = 7.x
 package = MH Install
+dependencies[] = addressfield
 dependencies[] = entity
 dependencies[] = devel
 dependencies[] = entityreference
