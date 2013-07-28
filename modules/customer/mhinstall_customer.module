@@ -15,6 +15,7 @@ function mhinstall_customer_entity_info() {
   $info['mhinstall_customer'] = array(
     // Human readable label
     'label' => t('Customer'),
+    'description' => t('Use to store information about installation Customers.'),
     // Table for storing entity data, defined in hook_schema().
     'base table' => 'mhinstall_customer',
     // This helps Entity API know how to query the custom table.

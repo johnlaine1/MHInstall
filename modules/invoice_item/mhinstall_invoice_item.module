@@ -15,6 +15,7 @@ function mhinstall_invoice_item_entity_info() {
   $info['mhinstall_invoice_item'] = array(
     // Human readable label
     'label' => t('Invoice Item'),
+    'description' => t('Use to store information about Invoice Items on installation invoices.'),
     // Table for storing entity data, defined in hook_schema().
     'base table' => 'mhinstall_invoice_item',
     // This helps Entity API know how to query the custom table.
