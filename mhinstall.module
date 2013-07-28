@@ -32,12 +32,6 @@ function mhinstall_admin_page(){
     '#type' => 'markup',
     '#markup' => 'Brought to you by the "mhinstall_admin_page()" function',
   );
-  $output['action_list'] = array(
-    '#theme' => 'item_list',    
-    '##title' => t('Actions'),
-    '#type' => 'ul',
-    '#items' => array('one', 'two', 'three', 'four', 'five'),
-  );
   return $output;
 }
 
