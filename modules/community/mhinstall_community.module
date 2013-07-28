@@ -16,7 +16,7 @@ function mhinstall_community_entity_info() {
     // Human readable label
     'label' => t('Community'),
     'plural label' => t('Communities'),
-    'description' => t('Store information about MH Communities'),
+    'description' => t('Use to store information about MH Communities.'),
     // Table for storing entity data, defined in hook_schema().
     'base table' => 'mhinstall_community',
     // This helps Entity API know how to query the custom table.
