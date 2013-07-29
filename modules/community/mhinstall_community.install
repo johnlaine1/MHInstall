@@ -42,3 +42,258 @@ function mhinstall_community_schema() {
   );
   return $schema;
 }
+
+/**
+ * Implements hook_install().
+ * Perform module setup tasks.
+ */
+function mhinstall_community_install() {
+
+  // Create all the fields we are adding to our entity type.
+  // http://api.drupal.org/api/function/field_create_field/7
+  foreach (_mhinstall_community_field_data() as $field) {
+    field_create_field($field);
+  }
+  
+  // Create all the instances for our fields.
+  // http://api.drupal.org/api/function/field_create_instance/7
+  foreach (_mhinstall_community_instance_data() as $instance) {
+    field_create_instance($instance);
+  }
+}
+
+function _mhinstall_community_field_data() {
+  $fields = array();
+  
+  $fields['field_community_address'] = array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_community_address' => array(
+              'country' => 'field_community_address_country',
+              'administrative_area' => 'field_community_address_administrative_area',
+              'sub_administrative_area' => 'field_community_address_sub_administrative_area',
+              'locality' => 'field_community_address_locality',
+              'dependent_locality' => 'field_community_address_dependent_locality',
+              'postal_code' => 'field_community_address_postal_code',
+              'thoroughfare' => 'field_community_address_thoroughfare',
+              'premise' => 'field_community_address_premise',
+              'sub_premise' => 'field_community_address_sub_premise',
+              'organisation_name' => 'field_community_address_organisation_name',
+              'name_line' => 'field_community_address_name_line',
+              'first_name' => 'field_community_address_first_name',
+              'last_name' => 'field_community_address_last_name',
+              'data' => 'field_community_address_data',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_community_address' => array(
+              'country' => 'field_community_address_country',
+              'administrative_area' => 'field_community_address_administrative_area',
+              'sub_administrative_area' => 'field_community_address_sub_administrative_area',
+              'locality' => 'field_community_address_locality',
+              'dependent_locality' => 'field_community_address_dependent_locality',
+              'postal_code' => 'field_community_address_postal_code',
+              'thoroughfare' => 'field_community_address_thoroughfare',
+              'premise' => 'field_community_address_premise',
+              'sub_premise' => 'field_community_address_sub_premise',
+              'organisation_name' => 'field_community_address_organisation_name',
+              'name_line' => 'field_community_address_name_line',
+              'first_name' => 'field_community_address_first_name',
+              'last_name' => 'field_community_address_last_name',
+              'data' => 'field_community_address_data',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'field_name' => 'field_community_address',
+    'type' => 'addressfield',
+    'module' => 'addressfield',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'country' => array(
+        'description' => 'Two letter ISO country code of this address.',
+        'type' => 'varchar',
+        'length' => 2,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'administrative_area' => array(
+        'description' => 'The administrative area of this address. (i.e. State/Province)',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'sub_administrative_area' => array(
+        'description' => 'The sub administrative area of this address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'locality' => array(
+        'description' => 'The locality of this address. (i.e. City)',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'dependent_locality' => array(
+        'description' => 'The dependent locality of this address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'postal_code' => array(
+        'description' => 'The postal code of this address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'thoroughfare' => array(
+        'description' => 'The thoroughfare of this address. (i.e. Street address)',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'premise' => array(
+        'description' => 'The premise of this address. (i.e. Apartment / Suite number)',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'sub_premise' => array(
+        'description' => 'The sub_premise of this address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => FALSE,
+      ),
+      'organisation_name' => array(
+        'description' => 'Contents of a primary OrganisationName element in the xNL XML.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'name_line' => array(
+        'description' => 'Contents of a primary NameLine element in the xNL XML.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'first_name' => array(
+        'description' => 'Contents of the FirstName element of a primary PersonName element in the xNL XML.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'last_name' => array(
+        'description' => 'Contents of the LastName element of a primary PersonName element in the xNL XML.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'data' => array(
+        'description' => 'Additional data for this address.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+        'serialize' => TRUE,
+      ),
+    ),
+    'bundles' => array(
+      'mhinstall_community' => array(
+        'mhinstall_community',
+      ),
+    ),
+  );
+  
+  return $fields;
+}
+
+function _mhinstall_community_instance_data() {
+  $instances = array();
+  
+  $instances['field_community_address'] = array(
+    'label' => 'Address',
+    'widget' => array(
+      'weight' => '0',
+      'type' => 'addressfield_standard',
+      'module' => 'addressfield',
+      'active' => 1,
+      'settings' => array(
+        'available_countries' => array(
+          'US' => 'US',
+        ),
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-country' => 'address-hide-country',
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+        ),
+      ),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'addressfield_default',
+        'weight' => '0',
+        'settings' => array(
+          'use_widget_handlers' => 1,
+          'format_handlers' => array(
+            'address',
+          ),
+        ),
+        'module' => 'addressfield',
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => array(
+      array(
+        'element_key' => 'mhinstall_community|mhinstall_community|field_community_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => 'US',
+      ),
+    ),
+    'field_name' => 'field_community_address',
+    'entity_type' => 'mhinstall_community',
+    'bundle' => 'mhinstall_community',
+    'deleted' => '0',
+  );
+  
+  return $instances;
+}
+
+ 
