@@ -401,6 +401,6 @@ function mhinstall_community_uninstall() {
   foreach (_mhinstall_community_field_data() as $field_name => $properties) {
     field_delete_field($field_name);
   }
-  field_purge_batch(100);
+  field_purge_batch(1000);
 }
 
