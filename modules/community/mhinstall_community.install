@@ -230,6 +230,71 @@ function _mhinstall_community_field_data() {
       ),
     ),
   );
+
+  $fields['field_community_notes'] = array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_community_notes' => array(
+              'value' => 'field_community_notes_value',
+              'format' => 'field_community_notes_format',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_community_notes' => array(
+              'value' => 'field_community_notes_value',
+              'format' => 'field_community_notes_format',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        'format',
+      ),
+    ),
+    'field_name' => 'field_community_notes',
+    'type' => 'text_long',
+    'module' => 'text',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ),
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'mhinstall_community' => array(
+        'mhinstall_community',
+      ),
+    ),
+  );
   
   return $fields;
 }
@@ -293,7 +358,49 @@ function _mhinstall_community_instance_data() {
     'deleted' => '0',
   );
   
+  $instances['field_community_notes'] = array(
+    'label' => 'Notes',
+    'widget' => array(
+      'weight' => '1',
+      'type' => 'text_textarea',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'rows' => '5',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'text_default',
+        'settings' => array(),
+        'module' => 'text',
+        'weight' => 1,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_community_notes',
+    'entity_type' => 'mhinstall_community',
+    'bundle' => 'mhinstall_community',
+    'deleted' => '0',
+  );
   return $instances;
 }
 
- 
+/**
+ * Implements hook_uninstall().
+ * Remove any information that the module sets.
+ */
+function mhinstall_community_uninstall() {
+  foreach (_mhinstall_community_field_data() as $field_name => $properties) {
+    field_delete_field($field_name);
+  }
+  field_purge_batch(100);
+}
+
