@@ -5,11 +5,11 @@ package = MH Install
 dependencies[] = entity
 dependencies[] = devel
 dependencies[] = entityreference
-dependencies[] = mhinstall_install
-dependencies[] = mhinstall_home
-dependencies[] = mhinstall_customer
-dependencies[] = mhinstall_community
-dependencies[] = mhinstall_invoice
-dependencies[] = mhinstall_invoice_item
+# dependencies[] = mhinstall_install
+# dependencies[] = mhinstall_home
+# dependencies[] = mhinstall_customer
+# dependencies[] = mhinstall_community
+# dependencies[] = mhinstall_invoice
+# dependencies[] = mhinstall_invoice_item
 
 
