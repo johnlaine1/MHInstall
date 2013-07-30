@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Implements hook_install().
+ * Perform module setup tasks.
+ */
+function mhinstall_install() {
+  module_enable(_mhinstall_module_list());  
+}
+
+/**
+ * Implements hook_disable().
+ * Perform necessary actions before module is disabled.
+ */
+
+/**
+ * Implements hook_enable().
+ * Perform necessary actions after module is enabled.
+ */
+function mhinstall_enable() {
+  module_enable(_mhinstall_module_list());
+}
+
+function mhinstall_disable() {
+  module_disable(_mhinstall_module_list());
+}
+
+/**
+ * Implements hook_uninstall().
+ * Remove any information that the module sets.
+ */ 
+function mhinstall_uninstall() {
+  module_disable(_mhinstall_module_list());
+  drupal_uninstall_modules(_mhinstall_module_list());
+}
+
+
+function _mhinstall_module_list() {
+
+  $modules = array(
+  'mhinstall_community',
+  'mhinstall_customer',
+  'mhinstall_home',
+  'mhinstall_install',
+  'mhinstall_invoice',
+  'mhinstall_invoice_item',
+  );
+  
+  return $modules;
+}
