@@ -2,4 +2,3 @@ name = Invoice Item
 description = A custom entity type. Machine name = mhinstall_invoice_item, Human name = MH Install invoice item
 core = 7.x
 package = MH Install
-dependencies[] = mhinstall

@@ -2,4 +2,3 @@ name = Home
 description = Creates an entity type named 'Home' to store information about Manufactured Homes.
 core = 7.x
 package = MH Install
-dependencies[] = mhinstall

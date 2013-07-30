@@ -2,4 +2,3 @@ name = Community
 description = A custom entity type. Machine name = mhinstall_community, Human name = MH Install Community
 core = 7.x
 package = MH Install
-dependencies[] = mhinstall
