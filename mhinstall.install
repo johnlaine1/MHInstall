@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_install().
+ * Perform module setup tasks.
+ */
+function mhinstall_install() {
+  $modules = array('mhinstall_community');
+  module_enable($modules);
+}
+
